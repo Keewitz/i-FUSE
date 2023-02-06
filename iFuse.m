@@ -1,5 +1,5 @@
 num=xlsread('HASILVIBRATIONSENSOR') % Mengimport sample data dari excel 
-Fs=1600; % Frequency sampling sebanyak 1600 Hz
+Fs=16; % Frequency sampling sebanyak 1600 Hz
 Ts=1/Fs; % Rumus periode sampling yaitu 1 dibagi dengan banyaknya frequency sampling 
 t = 0:Ts:1; % Indexing signal 0 sampai 1
 
@@ -12,7 +12,6 @@ ylabel('Data') % Memberi label pada sumbu Y dengan nama "Data"
 title('Raw Data') % Memberi judul pada grafik dengan nama "Rawdata"
 legend % Untuk melakukan penamaan grafik pada matlab 
 
-
 Y = fft(y,1024); % Operasi fft dalam 2^n atau 1024 bit
 Ym= abs(Y); % Mencari magnitude fft
 f= Fs*(0:511)/1024; % f indexing fft untuk salah satu
@@ -23,7 +22,6 @@ ylabel('Amplitude'); % Memberikan label pada sumbu Y grafik dengan nama Amplitud
 title('Sinus and Noise Spectrum') % Memberikan judul pada grafik dengan nama "Sinus and Noise Spectrum"
 
 z = filter(B,1,y); % Mendevelop FIR dengan koefiesien B
-sound(z,Fs); % Membunyikan signal z dengan fs yang telah di tentukan
 figure(3) % Membuat Figure 3
 plot(t,z) % Memplot signal z terhadap waktu
 xlabel('Time(s)') % Memberi label pada sumbu X dengan Time(s)
